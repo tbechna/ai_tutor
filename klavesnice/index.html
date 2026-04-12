@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 12px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #e0e0e0;}
+        
+        #displej { width: 100%; padding: 10px; font-size: 18px; margin-bottom: 12px; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc; font-family: monospace; background-color: white; color: black; outline: none; transition: border-color 0.2s;}
+        #displej:focus { border-color: #4CAF50; box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); }
+        
+        .section-title { font-size: 13px; color: #555; margin-bottom: 4px; font-weight: bold; }
+        .grid { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+        
+        /* Užší tlačítka: 6 tlačítek na řádek */
+        .btn { flex: 1 1 calc(16% - 5px); padding: 8px 2px; font-size: 14px; cursor: pointer; border: 1px solid #ccc; border-radius: 5px; background: white; text-align: center; }
+        .btn:hover { background: #e9ecef; }
+        
+        .btn-func { background-color: #e3f2fd; border-color: #bbdefb; color: #0d47a1; font-weight: bold;}
+        .btn-func:hover { background-color: #bbdefb; }
+        .btn-num { background-color: #fff; font-weight: bold; }
+        
+        /* Akční tlačítka dole */
+        .btn-action { background: #ff4b4b; color: white; border: none; font-size: 15px; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 5px;}
+        .btn-action:hover { background: #ff3333; }
+        
+        .btn-clear { background-color: #ffc107; color: black; border: none; font-weight: bold; padding: 10px; cursor: pointer; border-radius: 5px;}
+        .btn-clear:hover { background-color: #e0a800; }
+
+        .hint { font-size: 12px; color: #444; margin-bottom: 8px; background: #eef9fd; padding: 6px 10px; border-left: 4px solid #0288d1; border-radius: 4px; line-height: 1.3;}
+    </style>
+</head>
+<body>
+    
+    <input type="text" id="displej" placeholder="Zadej funkci proměnné x, kterou budeme integrovat...">
+    
+    <div class="section-title">Čísla a proměnná</div>
+    <div class="grid">
+        <button class="btn btn-num" onclick="pridej('x')">x</button>
+        <button class="btn btn-num" onclick="pridej('1')">1</button>
+        <button class="btn btn-num" onclick="pridej('2')">2</button>
+        <button class="btn btn-num" onclick="pridej('3')">3</button>
+        <button class="btn btn-num" onclick="pridej('4')">4</button>
+        <button class="btn btn-num" onclick="pridej('5')">5</button>
+        
+        <button class="btn btn-num" onclick="pridej('6')">6</button>
+        <button class="btn btn-num" onclick="pridej('7')">7</button>
+        <button class="btn btn-num" onclick="pridej('8')">8</button>
+        <button class="btn btn-num" onclick="pridej('9')">9</button>
+        <button class="btn btn-num" onclick="pridej('0')">0</button>
+        <button class="btn btn-num" onclick="pridej('.')">.</button>
+    </div>
+
+    <div class="section-title">Operátory, mocniny a zlomky</div>
+    <div class="grid">
+        <button class="btn" onclick="pridej('+')">+</button>
+        <button class="btn" onclick="pridej('-')">-</button>
+        <button class="btn" onclick="pridej('*')">*</button>
+        <button class="btn" onclick="pridej('/')">/</button>
+        <button class="btn" onclick="pridej('(')">(</button>
+        <button class="btn" onclick="pridej(')')">)</button>
+        
+        <button class="btn btn-func" onclick="pridej('**2')">x²</button>
+        <button class="btn btn-func" onclick="pridej('**')">xⁿ</button>
+        <button class="btn btn-func" onclick="pridej('sqrt(')">√</button>
+        <button class="btn btn-func" style="flex-grow: 2;" onclick="pridej('() / ()')">Zlomek ()/()</button>
+        <button class="btn" onclick="pridej(',')">,</button>
+    </div>
+
+    <div class="section-title">Pokročilé funkce a konstanty</div>
+    <div class="hint">
+        💡 <b>Tip:</b> Obecný logaritmus zapisujte s čárkou: <b>log(hodnota, základ)</b>. (Např. <b>log(8, 2)</b>)
+    </div>
+    <div class="grid">
+        <button class="btn btn-func" onclick="pridej('sin(')">sin</button>
+        <button class="btn btn-func" onclick="pridej('cos(')">cos</button>
+        <button class="btn btn-func" onclick="pridej('tan(')">tan</button>
+        <button class="btn btn-func" onclick="pridej('cot(')">cot</button>
+        <button class="btn btn-func" onclick="pridej('asin(')">arcsin</button>
+        <button class="btn btn-func" onclick="pridej('acos(')">arccos</button>
+        
+        <button class="btn btn-func" onclick="pridej('atan(')">arctan</button>
+        <button class="btn btn-func" onclick="pridej('acot(')">arccot</button>
+        <button class="btn btn-func" onclick="pridej('ln(')">ln</button>
+        <button class="btn btn-func" title="Zadávejte jako log(hodnota, zaklad)" onclick="pridej('log(')">logₐ</button>
+        <button class="btn btn-func" onclick="pridej('exp(')">eˣ</button>
+        <button class="btn btn-func" onclick="pridej('pi')">π</button>
+    </div>
+
+    <!-- Zde jsou obě tlačítka vedle sebe -->
+    <div class="grid" style="margin-bottom: 0;">
+        <button class="btn-clear" style="flex: 1 1 calc(30% - 5px);" onclick="smaz()">C (Vymazat vše)</button>
+        <button class="btn-action" style="flex: 1 1 calc(70% - 5px); margin: 0;" onclick="odesli()">Potvrdit zadání</button>
+    </div>
+
+    <script>
+        function sendMessageToStreamlitClient(type, data) {
+            window.parent.postMessage({isStreamlitMessage: true, type: type, ...data}, "*");
+        }
+
+        function init() {
+            sendMessageToStreamlitClient("streamlit:componentReady", {apiVersion: 1});
+            // Výška 550 by měla bezpečně stačit, aby se nic neustřihlo
+            sendMessageToStreamlitClient("streamlit:setFrameHeight", {height: 550});
+        }
+
+        function sendValue(value) {
+            sendMessageToStreamlitClient("streamlit:setComponentValue", {value: value});
+        }
+
+        let hodnota = "";
+        const displej = document.getElementById("displej");
+
+        displej.addEventListener('input', function() {
+            hodnota = displej.value;
+        });
+
+        function pridej(znak) {
+            let start = displej.selectionStart;
+            let end = displej.selectionEnd;
+            
+            let textPred = hodnota.substring(0, start);
+            let textZa = hodnota.substring(end);
+            
+            hodnota = textPred + znak + textZa;
+            displej.value = hodnota;
+            
+            displej.focus();
+            let novaPozice = start + znak.length;
+            displej.setSelectionRange(novaPozice, novaPozice);
+        }
+
+        function smaz() {
+            hodnota = "";
+            displej.value = hodnota;
+            displej.focus();
+        }
+
+        function odesli() {
+            sendValue(hodnota);
+        }
+
+        window.addEventListener("load", init);
+    </script>
+</body>
+</html>
