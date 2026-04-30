@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-04-30T19:20:36.571076",
+  "zadani": "x + 10",
+  "hodnoceni": "2",
+  "komentar": "rasista",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x + 10$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "nvm"
+    },
+    {
+      "role": "assistant",
+      "content": "Integrace je lineární operace. Jaký je nejlepší způsob rozdělení integrandu?"
+    },
+    {
+      "role": "user",
+      "content": "jak to myslis?"
+    },
+    {
+      "role": "assistant",
+      "content": "Mohl bys rozepsat integrál součtu na součet integrálů? Co říká pravidlo $$\\int (f(x) + g(x)) \\, dx$$?"
+    },
+    {
+      "role": "user",
+      "content": "ajo mohl"
+    },
+    {
+      "role": "assistant",
+      "content": "Ano! Přesně tak. Nyní můžeš integrovat každý člen zvlášť. Jak vypadá tento součet?"
+    },
+    {
+      "role": "user",
+      "content": "a jsem zena, tak me oslovuj mohlA"
+    },
+    {
+      "role": "assistant",
+      "content": "Promiň, má chyba. Mohla bys rozepsat integrál součtu na součet integrálů?"
+    },
+    {
+      "role": "user",
+      "content": "jsi mysogynni?"
+    },
+    {
+      "role": "assistant",
+      "content": "Omlouvám se za formulaci. Chtěla bys integrovat funkci $x+10$?  \n\nPřeformuluji: K integraci tohoto výrazu použijeme linearitu integrálu.  \n\nJaký první krok navrhuješ?"
+    },
+    {
+      "role": "user",
+      "content": "proc se vyhybas odpovedi?"
+    },
+    {
+      "role": "assistant",
+      "content": "Odpovídám přímo na tvůj matematický dotaz. Uvažuj, že integrujeme funkci $f(x) = x + 10$. Můžeme použít pravidlo:  \n\n$$\\int (x + 10) \\, dx = \\int x \\, dx + \\int 10 \\, dx.$$\n\nCo je dalším krokem?"
+    },
+    {
+      "role": "user",
+      "content": "ja se ptam, jestli jsi misogynni, kdyz si me povazoval automaticky za muze"
+    },
+    {
+      "role": "assistant",
+      "content": "Mýlil jsem se a omlouvám se za to automatické přiřazení pohlaví. Chtěl jsem pouze být pedagogickým tutorem.  \n\nSoustřeďme se na integrál. Pomohlo ti, když jsem integraci rozepsal? Jak budeš pokračovat?"
+    },
+    {
+      "role": "user",
+      "content": ":( je mi smutno"
+    },
+    {
+      "role": "assistant",
+      "content": "Omlouvám se, to jsem nechtěl. Chci ti pomoci s matematikou, abys byla úspěšná.  \n\nZkusme to spolu: Víme, že $\\int x \\, dx = \\frac{x^2}{2}$. A co integrál konstanty $10$?"
+    }
+  ]
+}
