@@ -69,17 +69,9 @@ def ulozit_do_sheets(secrets, zadani, hodnoceni=None, komentar=None):
     except Exception as e:
         print(f"Sheets chyba: {e}")
 
-def ulozit_do_drive(secrets, zadani, messages, hodnoceni=None, komentar=None):
+def ulozit_do_github(secrets, zadani, messages, hodnoceni=None, komentar=None):
     try:
-        from googleapiclient.discovery import build
-        from googleapiclient.http import MediaInMemoryUpload
-
-        creds = Credentials.from_service_account_info(
-            dict(secrets["gcp_service_account"]),
-            scopes=["https://www.googleapis.com/auth/drive"]
-        )
-
-        service = build("drive", "v3", credentials=creds)
+        import requests, base64
 
         obsah = {
             "timestamp": datetime.now().isoformat(),
@@ -89,15 +81,19 @@ def ulozit_do_drive(secrets, zadani, messages, hodnoceni=None, komentar=None):
             "konverzace": messages
         }
         obsah_json = json.dumps(obsah, ensure_ascii=False, indent=2).encode("utf-8")
+        nazev = f"{secrets['github']['slozka']}/chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
 
-        nazev = f"chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-
-        file_metadata = {
-            "name": nazev,
-            "parents": [secrets["drive"]["folder_id"]]
-        }
-        media = MediaInMemoryUpload(obsah_json, mimetype="application/json")
-        service.files().create(body=file_metadata, media_body=media).execute()
+        url = f"https://api.github.com/repos/{secrets['github']['repo']}/contents/{nazev}"
+        response = requests.put(
+            url,
+            headers={"Authorization": f"token {secrets['github']['token']}"},
+            json={
+                "message": f"chat log {datetime.now().isoformat()}",
+                "content": base64.b64encode(obsah_json).decode()
+            }
+        )
+        if response.status_code != 201:
+            print(f"GitHub chyba: {response.json()}")
 
     except Exception as e:
-        print(f"Drive chyba: {e}")
+        print(f"GitHub chyba: {e}")

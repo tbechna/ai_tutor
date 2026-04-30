@@ -6,7 +6,7 @@ from openai import OpenAI
 import sympy as sp
 
 #funkce
-from fce import token_count, vypocet_integralu, ulozit_do_sheets, ulozit_do_drive
+from fce import token_count, vypocet_integralu, ulozit_do_sheets, ulozit_do_github
 
 #pripojeni pres api
 client = OpenAI(
@@ -134,12 +134,12 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
                 hodnoceni=str(hodnoceni_skala),
                 komentar=komentar
             )
-            ulozit_do_drive(
-                st.secrets,
-                fce_pro_ulozeni,
-                zpravy_pro_ulozeni,
-                hodnoceni=str(hodnoceni_skala),
-                komentar=komentar
+            ulozit_do_github(
+            st.secrets,
+            fce_pro_ulozeni,
+            zpravy_pro_ulozeni,
+            hodnoceni=str(hodnoceni_skala),
+            komentar=komentar
             )
             st.rerun()
     
