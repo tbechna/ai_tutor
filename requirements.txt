@@ -2,3 +2,7 @@ streamlit
 openai
 sympy
 tiktoken
+gspread
+google-auth
+google-api-python-client
+requests

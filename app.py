@@ -6,7 +6,7 @@ from openai import OpenAI
 import sympy as sp
 
 #funkce
-from fce import token_count, vypocet_integralu
+from fce import token_count, vypocet_integralu, ulozit_do_sheets, ulozit_do_drive
 
 #pripojeni pres api
 client = OpenAI(
@@ -34,7 +34,7 @@ model_id = 'deepseek-v3.2'
         #f"ZNALOSTNÍ BÁZE:\n{znalosti}") """
 
 with open("tutor_config.md", "r", encoding="utf-8") as f:
-       system_instrukce = f.read()
+    system_instrukce = f.read()
     
 #______________________________________________________________________________________________________________
     #STREAMLIT
@@ -48,11 +48,13 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ukladani historie a konverzace
+# inicializace historie a konverzace a hodnoceni
 if 'historie' not in st.session_state: #sidebar - seznam prikladu
     st.session_state.historie = []
 if "messages" not in st.session_state: #konverzace - seznam zprav
     st.session_state.messages = []
+if "hodnoceni_dialog" not in st.session_state: #hodnoceni
+    st.session_state.hodnoceni_dialog = False
 
 #nastaveni klavesnice
 cesta_ke_slozce = os.path.join(os.path.dirname(__file__), "klavesnice")
@@ -74,37 +76,75 @@ if "aktualni_fce" not in st.session_state:
         else:  
                 # ulozeni do pameti jako sympy
             st.session_state.aktualni_fce = zadani
-            st.session_state.spravny_vysledek = vysledek
-                
+            st.session_state.spravny_vysledek = vysledek     
             st.session_state.messages = [
                     {"role": "assistant", "content": f"Budeme integrovat funkci ${sp.latex(zadani)}$. Napadá tě, jak postupovat?"}
                 ]           
             st.rerun() 
 
-if "aktualni_fce" in st.session_state:
-    # Změníme lehce poměr sloupců, aby mělo tlačítko dost místa
-    col_latex, col_btn = st.columns([0.8, 0.2])
-    
-    with col_latex:
-        # Text dáme normálně a na další řádek vložíme čistý latexový blok
-        st.markdown("**Aktuální zadání:**")
-        st.latex(rf"\int {sp.latex(st.session_state.aktualni_fce)} \, dx")
+if "aktualni_fce" in st.session_state: # po zadani integralu
 
-    with col_btn:
-        st.write("") # Tento prázdný řádek vizuálně zarovná tlačítko s nadpisem
-        if st.button("Nové zadání", use_container_width=True):
-            del st.session_state.aktualni_fce
-            del st.session_state.spravny_vysledek
-            st.session_state.messages = []
-            st.rerun()
+    #vykresleni zadani
+    st.markdown("**Aktuální zadání:**")
+    st.latex(rf"\int {sp.latex(st.session_state.aktualni_fce)} \, dx")
 
     #zpravicky
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+    #hodnoceni
+    if not st.session_state.hodnoceni_dialog:
+        if st.button("Nový příklad a zhodnocení chatbota"):
+            st.session_state.hodnoceni_dialog = True
+            st.rerun()
+    else:
+        st.info("Jak moc ti chatbot pomohl pochopit postup?")
+        hodnoceni_skala = st.select_slider(
+            "Hodnocení:",
+            options=[1, 2, 3, 4, 5],
+            value=3,
+            format_func=lambda x: {
+                1: "1 - vůbec nepomohl",
+                2: "2",
+                3: "3",
+                4: "4",
+                5: "5 - velmi pomohl"
+            }[x]
+        )
 
-#prompty od studenta
-    if prompt := st.chat_input("Napiš postup nebo se zeptej na radu."):
+        komentar = st.text_area(
+            "Narazil/a jsi na něco, co tě zmátlo nebo co chatbot špatně vysvětlil?",
+            placeholder="Napiš komentář... (nepovinné)"
+        )
+
+        zpracovava = st.session_state.get("zpracovava", False)
+
+        if st.button("Odeslat hodnocení", disabled=zpracovava):
+            st.session_state.zpracovava = True
+            fce_pro_ulozeni = st.session_state.get("aktualni_fce")
+            zpravy_pro_ulozeni = st.session_state.messages.copy()
+            del st.session_state.aktualni_fce
+            del st.session_state.spravny_vysledek
+            st.session_state.messages = []
+            st.session_state.hodnoceni_dialog = False
+            st.session_state.zpracovava = False
+            ulozit_do_sheets(
+                st.secrets,
+                fce_pro_ulozeni,
+                hodnoceni=str(hodnoceni_skala),
+                komentar=komentar
+            )
+            ulozit_do_drive(
+                st.secrets,
+                fce_pro_ulozeni,
+                zpravy_pro_ulozeni,
+                hodnoceni=str(hodnoceni_skala),
+                komentar=komentar
+            )
+            st.rerun()
+    
+    #prompt od studenta
+    if prompt := st.chat_input("Napiš postup nebo se zeptej na radu.", disabled=st.session_state.hodnoceni_dialog): #tlacitko novy priklad --> hodnoceni dialog je TRUE
     # zobrazení promptu a vlozeni do konverzace - with je bublina
 
         with st.chat_message("user"):
@@ -113,7 +153,7 @@ if "aktualni_fce" in st.session_state:
 
 
         septani = f"ZADÁNÍ INTEGRÁLU: {str(st.session_state.aktualni_fce)}. VÝSLEDEK: {str(st.session_state.spravny_vysledek)}"
-        api_messages = [{"role": "system", "content": system_instrukce + '\n\n' + septani }] + st.session_state.messages
+        api_messages = [{"role": "system", "content": system_instrukce + '\n\n' + septani }] + st.session_state.messages[-10:]
         
     #volani ai
         with st.chat_message("assistant"):
