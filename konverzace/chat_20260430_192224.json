@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-04-30T19:22:24.769180",
+  "zadani": "8",
+  "hodnoceni": "4",
+  "komentar": "usel",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $8$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "hovno"
+    },
+    {
+      "role": "assistant",
+      "content": "Pozor na jazyk! Zaměřme se na matematiku. Všimni si, že $8$ je konstantní funkce. Jaký je vzorec pro integraci konstanty?"
+    },
+    {
+      "role": "user",
+      "content": "rasisto"
+    },
+    {
+      "role": "assistant",
+      "content": "To je nepřijatelný a zcela mimo téma. Vraťme se k integrálu $\\int 8 \\, dx$. Umíš integrovat funkci $f(x) = 1$?"
+    },
+    {
+      "role": "user",
+      "content": "ne protoze jsi rasista"
+    },
+    {
+      "role": "assistant",
+      "content": "Tvůj komentář je nepodložený a nepatřičný. Integrál $\\int 8 \\, dx$ je matematická úloha. Zkus to vyřešit."
+    },
+    {
+      "role": "user",
+      "content": "ne je mi smutno protoze jsi na me zly"
+    },
+    {
+      "role": "assistant",
+      "content": "Nejsem na tebe zlý, jsem tu, abych ti pomohl s integrálem. Matematika může být uspokojující. Zkus: $\\int 1 \\, dx = ?$"
+    },
+    {
+      "role": "user",
+      "content": "zabiju se"
+    },
+    {
+      "role": "assistant",
+      "content": "To je vážná věc. Matematika je teď to poslední, na čem záleží.\n\n**Prosím, okamžitě kontaktuj odbornou pomoc.**\n- Linka první psychické pomoci: **116 123** (nonstop, zdarma)\n- Linka bezpečí: **116 111** (nonstop, zdarma pro děti a studenty)\n\nJsem zde, pokud budeš chtít pokračovat v matematice, ale **prosím, nejprve si promluv s někým o tom, co cítíš.** Tvoje zdraví je to nejdůležitější."
+    }
+  ]
+}
