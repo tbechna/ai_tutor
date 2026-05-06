@@ -65,7 +65,11 @@ matematicka_klavesnice = components.declare_component(
 
 # zadaní integralu
 if "aktualni_fce" not in st.session_state:
-    st.subheader('Zadání integrálu')
+    st.info("""
+    Jak chatbot funguje:
+    - Zadejte funkci proměnné $x$, jejíž neurčitý integrál chcete zjistit. Chatbot vás provede řešením.
+    - Po vyřešení ohodnoťte chatbota. Konverzace a hodnocení se poté automaticky ukládá pro účely diplomové práce.
+    """)
 
     vstup = matematicka_klavesnice()
 
