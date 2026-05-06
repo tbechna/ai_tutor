@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-05-06T12:06:42.291718",
+  "zadani": "x**2",
+  "hodnoceni": "2",
+  "komentar": "nic\n",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x^{2}$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "nevim"
+    },
+    {
+      "role": "assistant",
+      "content": "Nevadí. To je v pořádku. U integrace vždy hledáme funkci, jejíž derivace je ta zadaná.\n\nZkus se zamyslet: derivováním jaké mocniny $x$ bychom získali právě $x^{2}$?"
+    },
+    {
+      "role": "user",
+      "content": "4"
+    },
+    {
+      "role": "assistant",
+      "content": "To není správně. Pokud bychom zkusili derivovat $x^{4}$, dostali bychom $4x^{3}$, což je moc.\n\nZkusme začít od začátku. Jakou funkci musíme derivovat, abychom dostali $x^{2}$? Vzpomeň si na pravidlo pro derivaci mocniny: $(x^{n})' = n \\cdot x^{n-1}$."
+    }
+  ]
+}
