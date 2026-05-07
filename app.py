@@ -192,13 +192,11 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
 with st.sidebar:
     st.subheader("Přibližné využití tokenů")
     tokens = token_count(system_instrukce, st.session_state.messages, model_id)
-    st.metric("Využité tokeny", f"{tokens}")
+    st.metric("Přibližné využití tokenů", f"{tokens}")
     st.progress(min(tokens / 10000, 1.0))
 
     st.divider()
     
-    
-    st.subheader("Uložení dat")
     historie_json = json.dumps(st.session_state.messages, ensure_ascii=False, indent=4)
     st.download_button(
         label="Stáhnout historii chatu (JSON)",
