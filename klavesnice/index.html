@@ -65,7 +65,13 @@
         <button class="btn btn-func" style="flex-grow: 2;" onclick="pridej('() / ()')">Zlomek ()/()</button>
         <button class="btn" onclick="pridej(',')">,</button>
     </div>
-
+    
+    <div class="section-title">Konstanty</div>
+    <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr);">
+        <button class="btn btn-func" onclick="pridej('pi')">π</button>
+        <button class="btn btn-func" onclick="pridej('E')">e</button>
+    </div>
+    
     <div class="section-title">Pokročilé funkce a konstanty</div>
     <div class="hint">
         Logaritmus o obecném základu zapisujte jako: <b>log(argument, základ)</b>. (Např. <b>log(8, 2)</b>)
@@ -83,8 +89,6 @@
         <button class="btn btn-func" onclick="pridej('ln(')">ln</button>
         <button class="btn btn-func" title="Zadávejte jako log(hodnota, zaklad)" onclick="pridej('log(')">logₐ</button>
         <button class="btn btn-func" onclick="pridej('exp(')">eˣ</button>
-        <button class="btn btn-func" onclick="pridej('pi')">π</button>
-        <button class="btn btn-func" onclick="pridej('E')">e</button>
     </div>
 
     <!-- Zde jsou obě tlačítka vedle sebe -->
