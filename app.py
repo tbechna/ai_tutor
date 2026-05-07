@@ -15,24 +15,6 @@ client = OpenAI(
 )
 model_id = 'deepseek-v3.2'
   # instrukce ze souboru
-# try:
- #   with open('tutor_config.json', 'r', encoding='utf-8') as f:
-  #      tutor_data = json.load(f)
-    
-   # persona = tutor_data.get("tutor_persona", {})
-    #pravidla = "\n- ".join(tutor_data.get("format_vystupu", {}).get("pravidla", [])) # seznam
-    #scenare = json.dumps(tutor_data.get("scenare", {}), indent=2, ensure_ascii=False) #vnoreny slovnik
-    #znalosti = json.dumps(tutor_data.get("knowledge_base", {}), indent=2, ensure_ascii=False) #vnoreny slovnik
-
-    #system_instrukce = (
-       # f"Jsi AI tutor integrálního počtu.\n"
-        #f"ROLE: {persona.get('role')}\n"
-        #f"CÍL: {persona.get('cil')}\n"
-        #f"TÓN: {persona.get('ton')}\n\n"
-        #f"POVINNÁ PRAVIDLA:\n- {pravidla}\n\n"
-        #f"POVINNÉ REAKCE NA SITUACE:\n{scenare}\n\n"
-        #f"ZNALOSTNÍ BÁZE:\n{znalosti}") """
-
 with open("tutor_config.md", "r", encoding="utf-8") as f:
     system_instrukce = f.read()
     
@@ -44,6 +26,9 @@ st.markdown("""
         .block-container {
             padding-top: 1.5rem;
             padding-bottom: 0rem;
+        }
+        .stAlert {
+            padding-top: 1.2rem;
         }
     </style>
 """, unsafe_allow_html=True)
