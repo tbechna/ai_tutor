@@ -65,33 +65,29 @@
         <button class="btn btn-func" style="flex-grow: 2;" onclick="pridej('() / ()')">Zlomek ()/()</button>
         <button class="btn" onclick="pridej(',')">,</button>
     </div>
+
     
-    <div class="section-title">Konstanty</div>
-    <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr);">
-        <button class="btn btn-func" onclick="pridej('pi')">π</button>
-        <button class="btn btn-func" onclick="pridej('E')">e</button>
-    </div>
-    
-    <div class="section-title">Pokročilé funkce a konstanty</div>
+   <div class="section-title">Pokročilé funkce a konstanty</div>
     <div class="hint">
         Logaritmus o obecném základu zapisujte jako: <b>log(argument, základ)</b>. (Např. <b>log(8, 2)</b>)
     </div>
-    <div class="grid">
+    <div class="grid" style="display: grid; grid-template-columns: repeat(7, 1fr);">
         <button class="btn btn-func" onclick="pridej('sin(')">sin</button>
         <button class="btn btn-func" onclick="pridej('cos(')">cos</button>
         <button class="btn btn-func" onclick="pridej('tan(')">tan</button>
         <button class="btn btn-func" onclick="pridej('cot(')">cot</button>
         <button class="btn btn-func" onclick="pridej('asin(')">arcsin</button>
         <button class="btn btn-func" onclick="pridej('acos(')">arccos</button>
-        
         <button class="btn btn-func" onclick="pridej('atan(')">arctan</button>
+    
         <button class="btn btn-func" onclick="pridej('acot(')">arccot</button>
         <button class="btn btn-func" onclick="pridej('ln(')">ln</button>
         <button class="btn btn-func" title="Zadávejte jako log(hodnota, zaklad)" onclick="pridej('log(')">logₐ</button>
         <button class="btn btn-func" onclick="pridej('exp(')">eˣ</button>
+        <button class="btn btn-func" onclick="pridej('pi')">π</button>
+        <button class="btn btn-func" onclick="pridej('E')">e</button>
     </div>
 
-    <!-- Zde jsou obě tlačítka vedle sebe -->
     <div class="grid" style="margin-bottom: 0;">
         <button class="btn-clear" style="flex: 1 1 calc(30% - 5px);" onclick="smaz()">C (Vymazat vše)</button>
         <button class="btn-action" style="flex: 1 1 calc(70% - 5px); margin: 0;" onclick="odesli()">Potvrdit zadání</button>
