@@ -185,7 +185,6 @@ with st.sidebar:
         st.progress(min(tokens / 10000, 1.0))
         st.divider()
     
-    st.subheader("Uložení dat")
     historie_json = json.dumps(st.session_state.messages, ensure_ascii=False, indent=4)
     st.download_button(
         label="Stáhnout historii chatu (JSON)",
