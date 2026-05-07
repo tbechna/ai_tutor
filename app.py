@@ -190,7 +190,6 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
 
 # sidebar - historie vypoctu a reset konverzace
 with st.sidebar:
-    st.subheader("Přibližné využití tokenů")
     tokens = token_count(system_instrukce, st.session_state.messages, model_id)
     st.metric("Přibližné využití tokenů", f"{tokens}")
     st.progress(min(tokens / 10000, 1.0))
