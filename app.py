@@ -13,25 +13,9 @@ client = OpenAI(
     api_key=st.secrets["einfra"]["api_key"],
     base_url="https://llm.ai.e-infra.cz/v1"
 )
-model_id = 'deepseek-v3.2'
-  # instrukce ze souboru
-# try:
- #   with open('tutor_config.json', 'r', encoding='utf-8') as f:
-  #      tutor_data = json.load(f)
-    
-   # persona = tutor_data.get("tutor_persona", {})
-    #pravidla = "\n- ".join(tutor_data.get("format_vystupu", {}).get("pravidla", [])) # seznam
-    #scenare = json.dumps(tutor_data.get("scenare", {}), indent=2, ensure_ascii=False) #vnoreny slovnik
-    #znalosti = json.dumps(tutor_data.get("knowledge_base", {}), indent=2, ensure_ascii=False) #vnoreny slovnik
+model_id = 'deepseek-v4-pro'
 
-    #system_instrukce = (
-       # f"Jsi AI tutor integrálního počtu.\n"
-        #f"ROLE: {persona.get('role')}\n"
-        #f"CÍL: {persona.get('cil')}\n"
-        #f"TÓN: {persona.get('ton')}\n\n"
-        #f"POVINNÁ PRAVIDLA:\n- {pravidla}\n\n"
-        #f"POVINNÉ REAKCE NA SITUACE:\n{scenare}\n\n"
-        #f"ZNALOSTNÍ BÁZE:\n{znalosti}") """
+#instrukce
 
 with open("tutor_config.md", "r", encoding="utf-8") as f:
     system_instrukce = f.read()
