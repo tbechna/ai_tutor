@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-05-13T21:44:16.281159",
+  "zadani": "x + 2",
+  "hodnoceni": "2",
+  "komentar": "00",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x + 2$. Napadá tě, jak postupovat?"
+    }
+  ]
+}
