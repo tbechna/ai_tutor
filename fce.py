@@ -11,17 +11,9 @@ import json
 def token_count(system_instrukce, messages, model_id):
     try:
         encoding = tiktoken.get_encoding("cl100k_base")
-        
-        # 2. Spojíme texty
         full_text = system_instrukce + str(messages)
-        
-        # 3. Spočítáme základní tokeny
         zakladni_tokeny = len(encoding.encode(full_text))
-        
-        # 4. PŘIDÁNÍ REZERVY: DeepSeek tokenizuje mírně jinak, přidáme 5 % pro jistotu
-        # a zaokrouhlíme to nahoru na celé číslo
         tokeny_s_rezervou = math.ceil(zakladni_tokeny * 1.05)
-        
         return tokeny_s_rezervou
     except Exception:
         return 0
