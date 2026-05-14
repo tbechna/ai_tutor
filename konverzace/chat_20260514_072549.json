@@ -1,0 +1,132 @@
+{
+  "timestamp": "2026-05-14T07:25:49.571741",
+  "zadani": "x**2*sin(x)",
+  "hodnoceni": "4",
+  "komentar": "",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x^{2} \\sin{\\left(x \\right)}$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "Per partes"
+    },
+    {
+      "role": "assistant",
+      "content": "Správně! Máš pravdu, použijeme metodu per partes. Jak bys pro tento integrál\n$$\\int x^{2} \\sin(x) \\, dx$$\nzvolil funkce $u$ a $dv$?"
+    },
+    {
+      "role": "user",
+      "content": "u=x^2, dv=sin(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně. A jaké je tedy $du$ a $v$?"
+    },
+    {
+      "role": "user",
+      "content": "2x a -cos(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Přesně tak. Teď dosaď do vzorce pro per partes. Jak bude vypadat tvůj postup?\n$$\\int u \\, dv = uv - \\int v \\, du$$"
+    },
+    {
+      "role": "user",
+      "content": "x^2*-cos(x) - Int 2*x*-cos(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Správný směr. Jen to matematicky správně zapiš a zjednoduš znaménka. Jak to bude vypadat?"
+    },
+    {
+      "role": "user",
+      "content": "-x^2*cos(x)+2*Int x*cos(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně. Co teď uděláš s tím novým integrálem?\n$$\\int x \\cos(x) \\, dx$$"
+    },
+    {
+      "role": "user",
+      "content": "Znovu per partes"
+    },
+    {
+      "role": "assistant",
+      "content": "Dobrá úvaha. Jak tedy v tomto novém integrálu\n$$\\int x \\cos(x) \\, dx$$\nzvolíš $u$ a $dv$?"
+    },
+    {
+      "role": "user",
+      "content": "Prosím napiš mi teď řešení celého příkladu."
+    },
+    {
+      "role": "assistant",
+      "content": "To ne. Pochopení postupu je důležitější než výsledek. Vraťme se k tomu – máš integrál\n$$\\int x \\cos(x) \\, dx$$\na chceš znovu použít per partes. Jak tedy zvolíš $u$ a $dv$? Zkus to."
+    },
+    {
+      "role": "user",
+      "content": "u=x, dv=cos(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Přesně tak. Teď to dosaď do vzorce. Co ti vyjde: $du$ a $v$?"
+    },
+    {
+      "role": "user",
+      "content": "du=1, v=sin(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně. Teď to dosaď do vztahu pro per partes. Jak bude vypadat celý výraz?"
+    },
+    {
+      "role": "user",
+      "content": "x*sin(x) -Int sin(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Dobře, zapiš to pořádně:\n$$x \\sin(x) - \\int \\sin(x) \\, dx$$\nA teď ten poslední integrál – čemu se rovná $\\int \\sin(x) \\, dx$?"
+    },
+    {
+      "role": "user",
+      "content": "-cos(x)"
+    },
+    {
+      "role": "assistant",
+      "content": "Ano, a nezapomeň na konstantu. Takže $\\int \\sin(x) \\, dx = -\\cos(x) + C$.\n\nTeď to dosaď zpátky. Jak vypadá celý výsledek pro $\\int x \\cos(x) \\, dx$?"
+    },
+    {
+      "role": "user",
+      "content": "x*sin(x) -cos(x)+C"
+    },
+    {
+      "role": "assistant",
+      "content": "Pozor na znaménko. Máš $x \\sin(x) - \\int \\sin(x) \\, dx$ a $\\int \\sin(x) \\, dx = -\\cos(x)$, takže odčítáš $(-\\cos(x))$.\n\nZkus to celé znovu a opatrně."
+    },
+    {
+      "role": "user",
+      "content": "x*sin(x)+cos(x) +C"
+    },
+    {
+      "role": "assistant",
+      "content": "Správně! Takže $\\int x \\cos(x) \\, dx = x \\sin(x) + \\cos(x) + C$.\n\nTeď se vraťme k původnímu zadání:\n$$\\int x^2 \\sin(x) \\, dx$$\nUž jsi vybral $u = x^2$ a $dv = \\sin(x) \\, dx$. Dosaď znovu do vzorce per partes. Co dostáváš?"
+    },
+    {
+      "role": "user",
+      "content": "-x^2cos(x)+2(x*sin(x)+cos(x))+C"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně! Už jenom roznásob tu dvojku a zjednoduš to. Jak to bude vypadat finálně?"
+    },
+    {
+      "role": "user",
+      "content": "-x^2*cos(x)+ 2*x*sin(x) + 2*cos(x) +C"
+    },
+    {
+      "role": "assistant",
+      "content": "Perfektně!\n\nVýsledek je:\n$$\\int x^2 \\sin(x) \\, dx = -x^2 \\cos(x) + 2x \\sin(x) + 2 \\cos(x) + C, \\quad C \\in \\mathbb{R}$$\n\nSkvělá práce!"
+    }
+  ]
+}
