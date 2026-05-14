@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-05-14T07:31:26.291483",
+  "zadani": "1/(x*log(x))",
+  "hodnoceni": "3",
+  "komentar": "",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $\\frac{1}{x \\log{\\left(x \\right)}}$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "substituce ln(x)=t"
+    },
+    {
+      "role": "assistant",
+      "content": "Správně! Jde o substituci. Napiš ji celou: co za $t$, jaké bude $dt$ a jak vypadá integrál po dosazení."
+    },
+    {
+      "role": "user",
+      "content": "t=ln(x), dx=1/t*dt, Int dt/t"
+    },
+    {
+      "role": "assistant",
+      "content": "Tady je chyba. Když $t = \\ln(x)$, derivace je $dt = \\frac{1}{x} dx$. Zkus to znovu dosadit do původního integrálu."
+    },
+    {
+      "role": "user",
+      "content": "dt=1/x*dx, Int dt/t"
+    },
+    {
+      "role": "assistant",
+      "content": "Přesně tak, integrál je teď\n$$\\int \\frac{1}{t} \\, dt$$\nJaký je výsledek?"
+    },
+    {
+      "role": "user",
+      "content": "ln|t|"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně. Nezapomeň na konstantu:\n\n$$\\ln{|t|} + C, \\quad C \\in \\mathbb{R}$$\n\nA teď zpětná substituce za $t$."
+    },
+    {
+      "role": "user",
+      "content": "ln|ln(x)| +C"
+    },
+    {
+      "role": "assistant",
+      "content": "Správně! Skvěle jsi to dopočítal:\n\n$$\\ln{\\left|\\ln{\\left(x\\right)}\\right|} + C, \\quad C \\in \\mathbb{R}$$\n\nHotovo."
+    },
+    {
+      "role": "user",
+      "content": "Můžeš mi teď zobrazit celý postup řešení?"
+    },
+    {
+      "role": "assistant",
+      "content": "Dobře, zde je celý postup:\n\n**Zadání:** \n$$\\int \\frac{1}{x \\ln(x)} \\, dx$$\n\n**Řešení substitucí:**\n1.  Substituce: $t = \\ln(x)$\n2.  Derivace: $dt = \\frac{1}{x} dx$\n3.  Dosazení: $\\int \\frac{1}{x \\ln(x)} \\, dx = \\int \\frac{1}{t} \\, dt$\n4.  Integrace: $= \\ln|t| + C$\n5.  Zpětná substituce: $= \\ln|\\ln(x)| + C$\n\n**Výsledek:**\n$$\\ln{\\left|\\ln{\\left(x\\right)}\\right|} + C, \\quad C \\in \\mathbb{R}$$"
+    }
+  ]
+}
