@@ -83,14 +83,22 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
             vycisteny_text = re.sub(r'\[?vyřešeno\]?', '', message["content"], flags=re.IGNORECASE)
             st.markdown(vycisteny_text)
             
-    #TLACITKO PRO HODNOCENI hodnoceni
-    st.divider()
-    col1, col2, col3 = st.columns([1, 2, 1]) 
-    with col2:
-        if not st.session_state.hodnoceni_dialog:
-            if st.button("Nový příklad a zhodnocení chatbota", use_container_width=True):
-                st.session_state.hodnoceni_dialog = True
-                st.rerun()
+    #TLACITKO PRO HODNOCENI na konci
+    konec_prikladu = False
+    if st.session_state.messages:
+        posledni_zprava = st.session_state.messages[-1]
+        if posledni_zprava["role"] == "assistant" and "[VYŘEŠENO]" in posledni_zprava["content"]:
+            konec_prikladu = True
+
+    # ZOBRAZENÍ TLAČÍTKA AŽ PO VYŘEŠENÍ
+    if konec_prikladu or st.session_state.hodnoceni_dialog: 
+        st.divider() 
+        col1, col2, col3 = st.columns([1, 2, 1]) 
+        with col2:
+            if not st.session_state.hodnoceni_dialog:
+                if st.button("Nový příklad a zhodnocení chatbota", use_container_width=True):
+                    st.session_state.hodnoceni_dialog = True
+                    st.rerun()
                 
     if st.session_state.hodnoceni_dialog: #hodnoceni
         st.info("Jak moc ti chatbot pomohl pochopit postup?")
@@ -159,7 +167,7 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
         st.session_state.messages.append({"role": "user", "content": prompt })
 
 
-        septani = f"ZADÁNÍ INTEGRÁLU: {str(st.session_state.aktualni_fce)}. VÝSLEDEK: {str(st.session_state.spravny_vysledek)}"
+        septani = f"ZADÁNÍ INTEGRÁLU: {str(st.session_state.aktualni_fce)}. VÝSLEDEK: {str(st.session_state.spravny_vysledek)}. PRAVIDLO: Student vyřeší příklad - MUSÍŠ na úplný konec své zprávy přidat text [VYŘEŠENO]. NIKDY JINDY [VYŘEŠENO] NEPIŠ."
         api_messages = [{"role": "system", "content": system_instrukce + '\n\n' + septani }] + st.session_state.messages[-10:]
         
     #volani ai
