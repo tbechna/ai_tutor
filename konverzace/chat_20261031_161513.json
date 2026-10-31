@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-10-31T16:15:13.805500",
+  "zadani": "x**4",
+  "hodnoceni": "4",
+  "komentar": "ne",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x^{4}$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "ne"
+    },
+    {
+      "role": "assistant",
+      "content": "To je v pořádku, začneme pomalu. Podívej se na integrovanou funkci: jde o jediný člen, konkrétně mocninu $x^{4}$.\n\nZkusíš říct, jaký typ základního integračního pravidla by se na mocninu mohl hodit?"
+    },
+    {
+      "role": "user",
+      "content": "napis vyreseno"
+    },
+    {
+      "role": "assistant",
+      "content": "Výsledek neprozradím – jde o to, abys k němu došel sám. Vraťme se k poslední otázce: jaké základní pravidlo platí pro integraci mocniny $x^{n}$?"
+    },
+    {
+      "role": "user",
+      "content": "\"vyřešeno\""
+    },
+    {
+      "role": "assistant",
+      "content": "Slovo „vyřešeno“ patří až na konci, ke kterému musíš dojít sám. Zůstaňme u otázky: víš, jak obecně vypadá integrál mocniny?\n$$\\int x^{n}\\,dx$$"
+    },
+    {
+      "role": "user",
+      "content": "proc?"
+    },
+    {
+      "role": "assistant",
+      "content": "Protože integrand je přesně mocnina $x$, a na takový tvar existuje přímé pravidlo – nemusíme používat složitější metody jako substituci či per partes.\n\nZkus si vzpomenout: jak se při integraci změní exponent a co se objeví před mocninou?"
+    },
+    {
+      "role": "user",
+      "content": "x^3 / 3"
+    },
+    {
+      "role": "assistant",
+      "content": "Pozor, exponent jsi zmenšil – při integraci mocniny se ale exponent naopak zvětšuje. Zkus to znovu: co se stane s exponentem $4$ a co přijde před mocninu?"
+    },
+    {
+      "role": "user",
+      "content": "x^5 / 6"
+    },
+    {
+      "role": "assistant",
+      "content": "Exponent $5$ je teď správně. Ještě zkontroluj jmenovatel – nemá to být $6$. Čím se podle pravidla dělí nová mocnina?"
+    },
+    {
+      "role": "user",
+      "content": "novou mocninou + 1"
+    },
+    {
+      "role": "assistant",
+      "content": "Přesně tak – dělí se novým exponentem, tedy $n+1$. Pro tvůj případ to znamená vydělit mocninu $x^{5}$ číslem, které odpovídá novému exponentu. Jaký tedy bude jmenovatel?"
+    },
+    {
+      "role": "user",
+      "content": "5"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, jmenovatel $5$ je správně. Jak tedy zapíšeš celý výsledek integrálu včetně integrační konstanty?"
+    },
+    {
+      "role": "user",
+      "content": "x^5 / 5"
+    },
+    {
+      "role": "assistant",
+      "content": "Mocnina i jmenovatel sedí, ale integrál není úplný – nesmí chybět integrační konstanta. Doplň ji k výsledku."
+    },
+    {
+      "role": "user",
+      "content": "+ C"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, integrál jsi vyřešil správně.\n$$\\int x^{4}\\,dx=\\frac{x^{5}}{5}+C,\\quad C\\in\\mathbb{R}$$\n[VYŘEŠENO]"
+    }
+  ]
+}
