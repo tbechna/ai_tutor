@@ -80,9 +80,8 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
     #zpravicky
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-        # Skryje "vyřešeno" (i se závorkami a interpunkcí) pouze na konci textu
-        vycisteny_text = re.sub(r'\[?vyřešeno\]?[.\s!]*$', '', message["content"], flags=re.IGNORECASE)
-        st.markdown(vycisteny_text)
+            vycisteny_text = re.sub(r'\[?vyřešeno\]?[.\s!]*$', '', message["content"], flags=re.IGNORECASE)
+            st.markdown(vycisteny_text)
 
 #TLACITKO PRO HODNOCENI na konci
     konec_prikladu = False
