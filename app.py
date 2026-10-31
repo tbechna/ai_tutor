@@ -80,14 +80,16 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
     #zpravicky
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-            vycisteny_text = re.sub(r'\[?vyřešeno\]?', '', message["content"], flags=re.IGNORECASE)
-            st.markdown(vycisteny_text)
-            
-    #TLACITKO PRO HODNOCENI na konci
+        # Skryje "vyřešeno" (i se závorkami a interpunkcí) pouze na konci textu
+        vycisteny_text = re.sub(r'\[?vyřešeno\]?[.\s!]*$', '', message["content"], flags=re.IGNORECASE)
+        st.markdown(vycisteny_text)
+
+#TLACITKO PRO HODNOCENI na konci
     konec_prikladu = False
     if st.session_state.messages:
         posledni_zprava = st.session_state.messages[-1]
-        if posledni_zprava["role"] == "assistant" and "[VYŘEŠENO]" in posledni_zprava["content"]:
+        # Zkontroluje, zda zpráva od asistenta končí slovem "vyřešeno"
+        if posledni_zprava["role"] == "assistant" and re.search(r'\[?vyřešeno\]?[.\s!]*$', posledni_zprava["content"], re.IGNORECASE):
             konec_prikladu = True
 
     # ZOBRAZENÍ TLAČÍTKA AŽ PO VYŘEŠENÍ
