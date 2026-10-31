@@ -178,11 +178,13 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
                     messages=api_messages,
                 )  
 
-                txt_odpovedi = odpoved.choices[0].message.content
-                st.markdown(txt_odpovedi)
+                vycisteny_txt_odpovedi = re.sub(r'\[hotovo\]|hotovo\W*$', '', txt_odpovedi, flags=re.IGNORECASE)
+                st.markdown(vycisteny_txt_odpovedi)
                 
                 st.session_state.messages.append({"role": "assistant", "content": txt_odpovedi })
 
+                if re.search(r'\[hotovo\]|hotovo\W*$', txt_odpovedi, re.IGNORECASE):
+                    st.rerun()
             except Exception as e:
                 st.error(f"Omlouvám se, došlo k chybě: {e}")
 #____________________________________________________________________________________________________________________________
