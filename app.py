@@ -157,6 +157,8 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
 
             if chyba_ulozeni:
                 st.error("Nepodařilo se uložit data: " + ", ".join(chyba_ulozeni))
+
+            st.rerun()
     
     #prompt od studenta
     if prompt := st.chat_input("Napiš postup nebo se zeptej na radu.", disabled=st.session_state.hodnoceni_dialog): #tlacitko novy priklad --> hodnoceni dialog je TRUE
