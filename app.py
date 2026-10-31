@@ -97,27 +97,27 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
         col1, col2, col3 = st.columns([1, 2, 1]) 
         with col2:
             if not st.session_state.hodnoceni_dialog:
-                if st.button("Nový příklad a zhodnocení chatbota", use_container_width=True):
+                if st.button("Hodnocení chatbota", use_container_width=True):
                     st.session_state.hodnoceni_dialog = True
                     st.rerun()
                 
     if st.session_state.hodnoceni_dialog: #hodnoceni
-        st.info("Jak moc ti chatbot pomohl pochopit postup?")
+        st.info("Zhodnoť, zda-li Ti chatbot srozumitelně pomohl vysvětlit příklad.")
         hodnoceni_skala = st.select_slider(
             "Hodnocení:",
             options=[1, 2, 3, 4, 5],
             value=3,
             format_func=lambda x: {
-                1: "1 - vůbec nepomohl",
+                1: "1 - velmi pomohl",
                 2: "2",
                 3: "3",
                 4: "4",
-                5: "5 - velmi pomohl"
+                5: "5 - vůbec nepomohl"
             }[x]
         )
 
         komentar = st.text_area(
-            "Narazil/a jsi na něco, co tě zmátlo nebo co chatbot špatně vysvětlil?",
+            "Narazil/a jsi na něco, co Tě zmátlo nebo co chatbot špatně vysvětlil? Případně zde můžeš napsat jakoukoliv připomínku.",
             placeholder="Napiš komentář..."
         )
 
