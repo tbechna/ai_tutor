@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-10-31T16:52:14.236062",
+  "zadani": "x**2",
+  "hodnoceni": "3",
+  "komentar": ":3",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x^{2}$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "x^3 / 3"
+    },
+    {
+      "role": "user",
+      "content": "X^3/3"
+    },
+    {
+      "role": "assistant",
+      "content": "Výsledek je správný, ale chybí ti integrační konstanta. Doplň ji, aby byl výsledek úplný."
+    },
+    {
+      "role": "user",
+      "content": "+ C"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, teď je výsledek úplný: $$\\int x^{2} \\, dx = \\frac{x^{3}}{3} + C, \\quad C \\in \\mathbb{R}$$ [HOTOVO]"
+    }
+  ]
+}
