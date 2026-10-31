@@ -178,6 +178,8 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
                     messages=api_messages,
                 )  
 
+                txt_odpovedi = odpoved.choices[0].message.content
+                
                 vycisteny_txt_odpovedi = re.sub(r'\[hotovo\]|hotovo\W*$', '', txt_odpovedi, flags=re.IGNORECASE)
                 st.markdown(vycisteny_txt_odpovedi)
                 
