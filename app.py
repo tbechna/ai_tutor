@@ -15,8 +15,8 @@ client = OpenAI(
     base_url="https://llm.ai.e-infra.cz/v1"
 )
 model_id = 'deepseek-v4.1-flash-thinking'
-  # instrukce ze souboru
 
+# instrukce ze souboru
 with open("tutor_config.md", "r", encoding="utf-8") as f:
     system_instrukce = f.read()
     
@@ -53,7 +53,7 @@ if "aktualni_fce" not in st.session_state:
     st.info("""
     Jak chatbot funguje:
     - Zadejte funkci proměnné $x$, jejíž neurčitý integrál chcete zjistit. Chatbot vás provede řešením.
-    - Po vyřešení ohodnoťte chatbota. Konverzace a hodnocení se poté automaticky ukládá pro účely diplomové práce.
+    - Po vyřešení integrálu ohodnoťte chatbota. Konverzace a hodnocení se automaticky ukládají pro účely diplomové práce.
     """)
 
     vstup = matematicka_klavesnice()
@@ -77,19 +77,18 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
     st.markdown("**Aktuální zadání:**")
     st.latex(rf"\int {sp.latex(st.session_state.aktualni_fce)} \, dx")
 
-    #zpravicky
+   #zpravicky
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-            vycisteny_text = re.sub(r'\[?vyřešeno\]?\W*$', '', message["content"], flags=re.IGNORECASE)
+            vycisteny_text = re.sub(r'\[hotovo\]|hotovo\W*$', '', message["content"], flags=re.IGNORECASE)
             st.markdown(vycisteny_text)
 
 #TLACITKO PRO HODNOCENI na konci
     konec_prikladu = False
     if st.session_state.messages:
         posledni_zprava = st.session_state.messages[-1]
-        # Zkontroluje, zda zpráva od asistenta končí slovem "vyřešeno"
-        if posledni_zprava["role"] == "assistant" and re.search(r'\[?vyřešeno\]?\W*$', posledni_zprava["content"], re.IGNORECASE):
-            konec_prikladu = True
+    if posledni_zprava["role"] == "assistant" and re.search(r'\[hotovo\]|hotovo\W*$', posledni_zprava["content"], re.IGNORECASE):
+        konec_prikladu = True
 
     # ZOBRAZENÍ TLAČÍTKA AŽ PO VYŘEŠENÍ
     if konec_prikladu or st.session_state.hodnoceni_dialog: 
@@ -168,7 +167,7 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
         st.session_state.messages.append({"role": "user", "content": prompt })
 
 
-        septani = f"ZADÁNÍ INTEGRÁLU: {str(st.session_state.aktualni_fce)}. VÝSLEDEK: {str(st.session_state.spravny_vysledek)}. PRAVIDLO: Student vyřeší příklad - MUSÍŠ na úplný konec své zprávy přidat text [VYŘEŠENO]. NIKDY JINDY [VYŘEŠENO] NEPIŠ."
+        septani = f"ZADÁNÍ INTEGRÁLU: {str(st.session_state.aktualni_fce)}. VÝSLEDEK: {str(st.session_state.spravny_vysledek)}. PRAVIDLO: Student vyřeší příklad - MUSÍŠ na úplný konec své zprávy přidat text [HOTOVO]. NIKDY jindy [HOTOVO] NEPIŠ."
         api_messages = [{"role": "system", "content": system_instrukce + '\n\n' + septani }] + st.session_state.messages[-10:]
         
     #volani ai
