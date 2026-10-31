@@ -82,12 +82,16 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-    #hodnoceni
-    if not st.session_state.hodnoceni_dialog:
-        if st.button("Nový příklad a zhodnocení chatbota"):
-            st.session_state.hodnoceni_dialog = True
-            st.rerun()
-    else: #hodnoceni
+    #TLACITKO PRO HODNOCENI hodnoceni
+    st.divider()
+    col1, col2, col3 = st.columns([1, 2, 1]) 
+    with col2:
+        if not st.session_state.hodnoceni_dialog:
+            if st.button("Nový příklad a zhodnocení chatbota", use_container_width=True):
+                st.session_state.hodnoceni_dialog = True
+                st.rerun()
+                
+    if st.session_state.hodnoceni_dialog: #hodnoceni
         st.info("Jak moc ti chatbot pomohl pochopit postup?")
         hodnoceni_skala = st.select_slider(
             "Hodnocení:",
