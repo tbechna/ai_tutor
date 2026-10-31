@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-31T16:54:17.521007",
+  "zadani": "8",
+  "hodnoceni": "4",
+  "komentar": "fasd",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $8$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "8x"
+    },
+    {
+      "role": "assistant",
+      "content": "Správně, integrál konstanty jsi trefil. Nezapomněl jsi ale na něco, co k neurčitému integrálu vždy patří? Doplň to a napiš celý výsledek."
+    },
+    {
+      "role": "user",
+      "content": "8x+C"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, výsledek je správný včetně integrační konstanty $C \\in \\mathbb{R}$. Integrál konstanty máš zvládnutý. [HOTOVO]"
+    }
+  ]
+}
