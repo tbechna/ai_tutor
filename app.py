@@ -1,7 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import os
-import json
+import os, json, re
 from openai import OpenAI
 import sympy as sp
 from rich import print as rprint
@@ -81,7 +80,9 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
     #zpravicky
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+            vycisteny_text = re.sub(r'\[?vyřešeno\]?', '', message["content"], flags=re.IGNORECASE)
+            st.markdown(vycisteny_text)
+            
     #TLACITKO PRO HODNOCENI hodnoceni
     st.divider()
     col1, col2, col3 = st.columns([1, 2, 1]) 
