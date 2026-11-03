@@ -177,8 +177,7 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
             try:
                 odpoved = client.chat.completions.create(
                     model=model_id, 
-                    messages=api_messages,
-                    max_tokens=250
+                    messages=api_messages
                 )  
 
                 txt_odpovedi = odpoved.choices[0].message.content
