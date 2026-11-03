@@ -14,7 +14,7 @@ client = OpenAI(
     api_key=st.secrets["einfra"]["api_key"],
     base_url="https://llm.ai.e-infra.cz/v1"
 )
-model_id = 'deepseek-v4.1-flash'
+model_id = 'deepseek-v4.1-flash-thinking'
 
 # instrukce ze souboru
 with open("tutor_config.md", "r", encoding="utf-8") as f:
