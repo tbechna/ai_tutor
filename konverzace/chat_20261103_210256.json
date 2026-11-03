@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-11-03T21:02:56.243651",
+  "zadani": "x**2",
+  "hodnoceni": "4",
+  "komentar": "v seminari na ukazku",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x^{2}$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "vzorex"
+    },
+    {
+      "role": "assistant",
+      "content": "Máš na mysli vzorec, ale nejdřív pojmenuj, o jaký typ funkce jde a kterou metodu použiješ. Podívej se na tvar integrované funkce – co je to za mocninu?"
+    },
+    {
+      "role": "user",
+      "content": "kvadraticka"
+    },
+    {
+      "role": "assistant",
+      "content": "Dobře, jde o mocninnou funkci. Znáš pravidlo pro integraci mocnin – zkus ho slovně popsat: co uděláš s exponentem?"
+    },
+    {
+      "role": "user",
+      "content": "exponent zvysim a vydelim jim funkci"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, to je správné pravidlo. Aplikuj ho tedy na $x^{2}$ a napiš celý výsledek."
+    },
+    {
+      "role": "user",
+      "content": "x^3 / 3"
+    },
+    {
+      "role": "assistant",
+      "content": "Správný tvar zatím máš, ale finální zápis integrálu není úplný. Co k němu ještě podle pravidel neurčitého integrálu patří?"
+    },
+    {
+      "role": "user",
+      "content": "+ C"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, doplněním konstanty je zápis kompletní:\n$$\\int x^{2}\\,dx = \\frac{x^{3}}{3} + C.$$\n[HOTOVO]"
+    }
+  ]
+}
