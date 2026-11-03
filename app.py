@@ -107,11 +107,11 @@ if "aktualni_fce" in st.session_state: # po zadani integralu
             options=[1, 2, 3, 4, 5],
             value=3,
             format_func=lambda x: {
-                1: "1 - velmi pomohl",
+                1: "1 - vůbec nepomohl",
                 2: "2",
                 3: "3",
                 4: "4",
-                5: "5 - vůbec nepomohl"
+                5: "5 - velmi pomohl"
             }[x]
         )
 
