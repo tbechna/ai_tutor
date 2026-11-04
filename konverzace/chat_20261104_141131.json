@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-11-04T14:11:31.012198",
+  "zadani": "x",
+  "hodnoceni": "2",
+  "komentar": "seminar\n",
+  "konverzace": [
+    {
+      "role": "assistant",
+      "content": "Budeme integrovat funkci $x$. Napadá tě, jak postupovat?"
+    },
+    {
+      "role": "user",
+      "content": "x**2/2"
+    },
+    {
+      "role": "assistant",
+      "content": "Dobře, tvar mocniny sedí. Zamysli se ale, zda je tento zápis úplným výsledkem neurčitého integrálu – co k němu ještě patří?"
+    },
+    {
+      "role": "user",
+      "content": "+c"
+    },
+    {
+      "role": "assistant",
+      "content": "Výborně, konstanta je správně. Napiš teď prosím celé řešení pohromadě jako jednu rovnici."
+    },
+    {
+      "role": "user",
+      "content": "x**2 / 2 ++c"
+    },
+    {
+      "role": "assistant",
+      "content": "Pozor na přebytečné druhé „+“ – zápis má být čistě $\\frac{x^2}{2} + C$. Jinak je výsledek správný, gratuluji.\n\n$$\\int x \\, dx = \\frac{x^2}{2} + C$$\n\n[HOTOVO]"
+    }
+  ]
+}
